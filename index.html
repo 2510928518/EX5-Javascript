@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Ghibli Carousel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <section>
+    <main>
+      <div class="carousel" id="carousel">
+        <div class="slides" id="slides">
+          <div class="slide card">
+            <figure>
+              <img src="assets/spiritedaway.jpg" alt="Spirited Away" class="poster">
+              <video class="trailer" autoplay loop muted controls>
+                <source src="assets/spirited-away-trailer.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <div class="caption">
+              <h2>Spirited Away</h2>
+              <p>A magical journey into the spirit world.</p>
+            </div>
+          </div>
+          
+          <div class="slide card">
+            <figure>
+              <img src="assets/arrietty.webp" alt="Arrietty" class="poster">
+              <video class="trailer" autoplay loop muted controls>
+                <source src="assets/arrietty-trailer.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <div class="caption">
+              <h2>Arrietty</h2>
+              <p>A "little" girl's BIG life</p>
+            </div>
+          </div>
+          
+          <div class="slide card">
+            <figure>
+              <img src="assets/kiki.webp" alt="Kiki's Delivery Service" class="poster">
+              <video class="trailer" autoplay loop muted controls>
+                <source src="assets/kiki-trailer.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <div class="caption">
+              <h2>Kiki's Delivery Service</h2>
+              <p>An enchanting witch grows up</p>
+            </div>
+          </div>
+          
+          <div class="slide card">
+            <figure>
+              <img src="assets/totoro.jpg" alt="My Neighbor Totoro" class="poster">
+              <video class="trailer" autoplay loop muted controls>
+                <source src="assets/totoro-trailer.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <div class="caption">
+              <h2>My Neighbor Totoro</h2>
+              <p>Imagination.Joy.Resilience</p>
+            </div>
+          </div>
+          
+          <div class="slide card">
+            <figure>
+              <img src="assets/howlscastle.jpg" alt="Howl's Moving Castle" class="poster">
+              <video class="trailer" autoplay loop muted controls>
+                <source src="assets/howl-trailer.mp4" type="video/mp4">
+              </video>
+            </figure>
+            <div class="caption">
+              <h2>Howl's Moving Castle</h2>
+              <p>Family is what you make of it</p>
+            </div>
+          </div>
+        </div>
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
+      </div>
+    </main>
+  </section>
+
+<nav id="mainNav">
+  <img src="assets/menu-icon.png" id="menuToggle" class="menu-icon" alt="Menu Icon">
+  <ul id="navLinks">
+    <li><a href="#" id="visitLink">Visit</a></li>
+    <li><a href="#" id="aboutLink">About</a></li>
+    <li><a href="#" id="ticketsLink">Tickets</a></li>
+    <li><a href="#" id="faqLink">FAQ</a></li>
+    <li><a href="#" id="contactLink">Contact</a></li>
+    <li><a href="#" id="shopLink">Shop</a></li>
+  </ul>
+  <div id="cartButton" style="display: none;">
+    <span id="cartCount">0</span>
+    <button id="checkoutButton">Checkout</button>
+  </div>
+</nav>
+
+
+<section id="shopping" >
+  <div class="shopping-container">
+    <h2>Ghibli Merchandise</h2>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search products...">
+    </div>
+    <div class="products-container" id="productsContainer"></div>
+  </div>
+</section>
+
+<section id="checkout" style="display: none;">
+  <div class="checkout-container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems"></div>
+    <div id="totalPrice"></div>
+    <button id="proceedToPayment">Proceed to Payment</button>
+    <button id="backToShopping">Back to Shopping</button>
+  </div>
+</section>
+
+<section id="payment" style="display: none;">
+  <div class="payment-container">
+    <h2>Payment Information</h2>
+    <form id="paymentForm">
+      <div>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required>
+        <span class="error" id="fullNameError"></span>
+      </div>
+      
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+      </div>
+      
+      <div>
+        <label for="address">Shipping Address:</label>
+        <textarea id="address" required></textarea>
+        <span class="error" id="addressError"></span>
+      </div>
+      
+      <div>
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" required>
+        <span class="error" id="cardNumberError"></span>
+      </div>
+      
+      <div>
+        <label for="expiry">Expiry Date:</label>
+        <input type="text" id="expiry" placeholder="MM/YY" required>
+        <span class="error" id="expiryError"></span>
+      </div>
+      
+      <div>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" required>
+        <span class="error" id="cvvError"></span>
+      </div>
+      
+      <button type="submit">Confirm Purchase</button>
+    </form>
+  </div>
+</section>
+
+<section id="confirmation" style="display: none;">
+  <div class="confirmation-container">
+    <h2>Order Confirmation</h2>
+    <div id="orderSummary"></div>
+    <p id="thankYouMessage">Thank you for your order. It will be delivered in the next 3-4 working days.</p>
+    <button id="backToShoppingFromConfirmation">Back to Shopping</button>
+  </div>
+</section>
+
+
+
+  <section id="registration">
+    <form id="registrationform">
+      <h2 class="form-title">Visit us at Ghibli Park</h2> 
+      <div>
+        <label for="date-of-visit">When would you like to visit us?</label>
+        <input type="date" id="date-of-visit" required>
+        <span class="error" id="visitDateError"></span>
+      </div>
+      
+      <div>
+        <label for="no-of-visitors">How many are coming?</label>
+        <select id="no-of-visitors" required>
+          <option value="">Select</option>
+          <option value="Just me">Just me</option>
+          <option value="My friend and I">My friend and I</option>
+          <option value="Some of my friends and I (3-4)">Some of my friends and I (3-4)</option>
+          <option value="My family and I(4 or more)">My family and I(4 or more)</option>
+        </select>
+        <span class="error" id="visitorsError"></span>
+      </div>
+      
+      <div>
+        <label for="name">Your Full Name:</label>
+        <input type="text" id="name" required>
+        <span class="error" id="nameError"></span>
+      </div>
+      
+      <div>
+        <label for="email">Your Email Address:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+      </div>
+      
+      <div>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+        <span class="error" id="dobError"></span>
+      </div>
+      
+      <div>
+        <label>Gender:</label>
+        <div>
+          <input type="radio" id="male" name="gender" value="male" required>
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label>
+        </div>
+        <span class="error" id="genderError"></span>
+      </div>
+      
+      <div>
+        <label for="ticket">Ticket Type:</label>
+        <select id="ticket" required>
+          <option value="">Select</option>
+          <option value="standard">Standard</option>
+          <option value="Guided Tour">Guided Tour</option>
+          <option value="family">Family Package(Guided tour included)</option>
+        </select>
+        <span class="error" id="ticketError"></span>
+      </div>
+      
+      <div>
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments"></textarea>
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
